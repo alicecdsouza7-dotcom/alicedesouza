@@ -49,6 +49,11 @@ nav {
     z-index: 1000;
 }
 
+/* ensure anchor scroll never hides headings behind sticky nav */
+:target {
+    scroll-margin-top: 110px;
+}
+
 .nav-container {
     display: flex;
     justify-content: center;
