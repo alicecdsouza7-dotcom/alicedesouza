@@ -131,6 +131,56 @@ ul {
     background: #1e1e2f;
 }
 
+.btn-secondary {
+    background: white;
+    color: #3a3a5f;
+    border: 2px solid #3a3a5f;
+}
+
+.btn-secondary:hover {
+    background: #3a3a5f;
+    color: white;
+}
+
+.btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Portfolio viewer */
+.portfolio-frame-wrap {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e2e5ec;
+    background: #eceef2;
+}
+
+.portfolio-frame-wrap iframe,
+.portfolio-frame-wrap embed {
+    width: 100%;
+    height: 80vh;
+    min-height: 500px;
+    max-height: 900px;
+    border: none;
+    display: block;
+}
+
+.portfolio-fallback {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.pdf-note {
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+    margin-top: 14px;
+}
+
 footer {
     background: #1e1e2f;
     color: white;
@@ -152,6 +202,11 @@ footer {
 
     .card {
         border-radius: 10px;
+    }
+
+    .portfolio-frame-wrap iframe,
+    .portfolio-frame-wrap embed {
+        height: 65vh;
     }
 }
 
@@ -177,6 +232,7 @@ footer {
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
+        <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact</a>
     </div>
 </nav>
@@ -243,6 +299,34 @@ coordination.</li>
     </div>
 </section>
 
+<section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="card">
+        <p style="margin-bottom: 18px;">
+            Browse the full Art Project Portfolio (2015–2025) below, featuring The Beer Museum, beach art & performance installations, community programs, and more. Use the scrollbar within the viewer to page through, or open/download the PDF directly.
+        </p>
+
+        <div class="portfolio-frame-wrap" id="pdf-wrap">
+            <iframe
+                src="ALICE_D_SOUZA_ART_PROJECT_PORTFOLIO.pdf"
+                title="Alice D'Souza Art Project Portfolio PDF"
+                id="pdf-iframe">
+            </iframe>
+        </div>
+
+        <div class="portfolio-fallback" id="pdf-fallback">
+            <p>Your browser can't preview the PDF inline.</p>
+        </div>
+
+        <p class="pdf-note">If the preview above doesn't load (common on some mobile browsers), use the buttons below.</p>
+
+        <div class="btn-row" style="margin-top: 16px;">
+            <a href="ALICE_D_SOUZA_ART_PROJECT_PORTFOLIO.pdf" target="_blank" class="btn">Open Portfolio PDF</a>
+            <a href="ALICE_D_SOUZA_ART_PROJECT_PORTFOLIO.pdf" download class="btn btn-secondary">Download PDF</a>
+        </div>
+    </div>
+</section>
+
 <section id="contact" class="contact">
     <h2>Contact</h2>
     <div class="card">
@@ -256,6 +340,20 @@ coordination.</li>
 <footer>
     <p>© 2026 Alice Dsouza | All Rights Reserved</p>
 </footer>
+
+<script>
+// Fallback detection for browsers that can't render PDFs inline (e.g. some mobile browsers)
+(function() {
+    var iframe = document.getElementById('pdf-iframe');
+    var wrap = document.getElementById('pdf-wrap');
+    var fallback = document.getElementById('pdf-fallback');
+    var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+        // Many mobile browsers can't render PDF in an iframe; show fallback message alongside.
+        fallback.style.display = 'block';
+    }
+})();
+</script>
 
 </body>
 </html>
