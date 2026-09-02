@@ -3,354 +3,569 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alice Dsouza | Art Project Coordinator</title>
+<title>Alice Dsouza — Art Project Coordinator</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root{
+  --paper:#EFEAE0;
+  --paper-dim:#E6E0D2;
+  --ink:#221F1A;
+  --ink-soft:#5B564C;
+  --rust:#A63D1F;
+  --moss:#4E6A54;
+  --line:#D6CEBB;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #f4f6f9;
-    color: #333;
-    line-height: 1.6;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'IBM Plex Sans', sans-serif;
+  font-size:16px;
+  line-height:1.65;
 }
 
-header {
-    background: linear-gradient(135deg, #1e1e2f, #3a3a5f);
-    color: white;
-    padding: 60px 20px;
-    text-align: center;
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
 }
 
-header h1 {
-    font-size: clamp(26px, 6vw, 42px);
-    font-weight: 600;
+a{color:inherit;}
+
+:target{scroll-margin-top:24px;}
+
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 28px;
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:0 72px;
 }
 
-header p {
-    margin-top: 10px;
-    font-size: clamp(14px, 3.5vw, 18px);
-    opacity: 0.9;
+/* ---------- Sidebar ---------- */
+
+.sidebar{
+  padding-top:64px;
+  align-self:start;
+  position:sticky;
+  top:0;
+  max-height:100vh;
+  overflow-y:auto;
 }
 
-/* Navigation */
-nav {
-    background: white;
-    padding: 12px 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.sidebar .name{
+  font-family:'Fraunces', serif;
+  font-weight:450;
+  font-size:clamp(34px, 3vw, 42px);
+  line-height:1.08;
+  letter-spacing:-0.01em;
 }
 
-/* ensure anchor scroll never hides headings behind sticky nav */
-:target {
-    scroll-margin-top: 110px;
+.sidebar .role{
+  margin-top:10px;
+  font-size:14.5px;
+  color:var(--ink-soft);
+  max-width:22ch;
 }
 
-.nav-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
+.sidebar nav{
+  margin-top:46px;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
 }
 
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    padding: 6px 10px;
-    border-radius: 20px;
+.sidebar nav a{
+  text-decoration:none;
+  font-size:14.5px;
+  padding:8px 0;
+  border-bottom:1px solid var(--line);
+  color:var(--ink-soft);
+  transition:color .15s ease, border-color .15s ease;
 }
 
-nav a:hover {
-    background: #f0f0f5;
+.sidebar nav a:hover,
+.sidebar nav a.active{
+  color:var(--rust);
+  border-color:var(--rust);
 }
 
-section {
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 0 16px;
-    scroll-margin-top: 90px; /* prevents anchor overlap with sticky nav */
+.sidebar .meta{
+  margin-top:46px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  font-size:13.5px;
+  color:var(--ink-soft);
 }
 
-h2 {
-    font-size: clamp(22px, 5vw, 28px);
-    margin-bottom: 20px;
+.sidebar .meta p{margin-bottom:6px;}
+.sidebar .meta a{color:var(--ink); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px;}
+.sidebar .meta a:hover{color:var(--rust); text-decoration-color:var(--rust);}
+
+/* ---------- Main content ---------- */
+
+main{padding-top:64px;padding-bottom:120px;}
+
+.block{margin-bottom:88px; scroll-margin-top:28px;}
+
+.block-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:28px;
+  border-bottom:1px solid var(--ink);
+  padding-bottom:12px;
 }
 
-h2::after {
-    content: "";
-    width: 50px;
-    height: 3px;
-    background: #3a3a5f;
-    display: block;
-    margin-top: 8px;
+.block-head h2{
+  font-family:'Fraunces', serif;
+  font-weight:450;
+  font-size:clamp(22px, 3vw, 27px);
 }
 
-.card {
-    background: white;
-    padding: clamp(18px, 4vw, 25px);
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
+.block-head .tally{
+  font-size:13px;
+  color:var(--ink-soft);
+  white-space:nowrap;
 }
 
-ul {
-    padding-left: 20px;
+.summary p{
+  max-width:62ch;
+  font-size:16.5px;
 }
 
-.project h3 {
-    margin-bottom: 8px;
-    font-size: clamp(16px, 4vw, 20px);
+.summary p + p{margin-top:16px;}
+
+/* Experience list, styled like a museum checklist */
+
+.entry{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:24px;
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
 }
 
-.contact {
-    text-align: center;
+.entry:first-child{padding-top:0;}
+.entry:last-child{border-bottom:none;}
+
+.entry .years{
+  font-size:13.5px;
+  color:var(--rust);
+  padding-top:2px;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 24px;
-    background: #3a3a5f;
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    transition: 0.3s ease;
-    font-size: 14px;
+.entry h3{
+  font-family:'Fraunces', serif;
+  font-weight:450;
+  font-size:18.5px;
+  margin-bottom:6px;
 }
 
-.btn:hover {
-    background: #1e1e2f;
+.entry .org{
+  font-size:14px;
+  color:var(--ink-soft);
+  margin-bottom:10px;
 }
 
-.btn-secondary {
-    background: white;
-    color: #3a3a5f;
-    border: 2px solid #3a3a5f;
+.entry p.desc{
+  font-size:15px;
+  max-width:62ch;
 }
 
-.btn-secondary:hover {
-    background: #3a3a5f;
-    color: white;
+/* Projects grid */
+
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
 }
 
-.btn-row {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
+.project{
+  background:var(--paper);
+  padding:26px 24px;
 }
 
-/* Portfolio viewer */
-.portfolio-frame-wrap {
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid #e2e5ec;
-    background: #eceef2;
+.project h3{
+  font-family:'Fraunces', serif;
+  font-weight:450;
+  font-size:17px;
+  margin-bottom:8px;
 }
 
-.portfolio-frame-wrap iframe,
-.portfolio-frame-wrap embed {
-    width: 100%;
-    height: 80vh;
-    min-height: 500px;
-    max-height: 900px;
-    border: none;
-    display: block;
+.project p{
+  font-size:14.5px;
+  color:var(--ink-soft);
 }
 
-.portfolio-fallback {
-    display: none;
-    text-align: center;
-    padding: 40px 20px;
+/* Skills */
+
+.skills-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
 }
 
-.pdf-note {
-    text-align: center;
-    font-size: 13px;
-    color: #777;
-    margin-top: 14px;
+.skills-list span{
+  font-size:13.5px;
+  padding:7px 14px;
+  border:1px solid var(--ink);
+  border-radius:100px;
 }
 
-footer {
-    background: #1e1e2f;
-    color: white;
-    text-align: center;
-    padding: 18px 12px;
-    margin-top: 60px;
-    font-size: 14px;
+.skills-list span:nth-child(3n+1){border-color:var(--rust); color:var(--rust);}
+.skills-list span:nth-child(3n+2){border-color:var(--moss); color:var(--moss);}
+
+/* Portfolio */
+
+.portfolio-frame-wrap{
+  border:1px solid var(--line);
+  background:var(--paper-dim);
 }
 
-/* Responsive layout improvements */
-@media (max-width: 600px) {
-    header {
-        padding: 40px 16px;
-    }
-
-    section {
-        margin: 35px auto;
-    }
-
-    .card {
-        border-radius: 10px;
-    }
-
-    .portfolio-frame-wrap iframe,
-    .portfolio-frame-wrap embed {
-        height: 65vh;
-    }
+.portfolio-frame-wrap iframe{
+  width:100%;
+  height:78vh;
+  min-height:460px;
+  max-height:820px;
+  border:none;
+  display:block;
 }
 
-@media (min-width: 900px) {
-    .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
+.pdf-note{
+  font-size:13px;
+  color:var(--ink-soft);
+  margin-top:14px;
+}
+
+.btn-row{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.btn{
+  display:inline-block;
+  padding:11px 22px;
+  text-decoration:none;
+  font-size:14px;
+  border:1px solid var(--ink);
+  color:var(--ink);
+  transition:background .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.btn:hover{background:var(--ink); color:var(--paper);}
+
+.btn.primary{background:var(--rust); border-color:var(--rust); color:var(--paper);}
+.btn.primary:hover{background:var(--ink); border-color:var(--ink);}
+
+/* Footer */
+
+footer{
+  border-top:1px solid var(--ink);
+  padding:24px 28px;
+  max-width:1180px;
+  margin:0 auto;
+  font-size:13px;
+  color:var(--ink-soft);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px){
+  .wrap{
+    grid-template-columns:1fr;
+    padding:0 22px;
+  }
+
+  .sidebar{
+    position:static;
+    padding-top:44px;
+    max-height:none;
+    overflow:visible;
+  }
+
+  .sidebar nav{
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:28px;
+  }
+
+  .sidebar nav a{
+    border:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:7px 12px;
+    border-radius:100px;
+  }
+
+  .sidebar nav a:hover,
+  .sidebar nav a.active{
+    border-color:var(--rust);
+  }
+
+  .sidebar .meta{margin-top:32px;}
+
+  main{padding-top:48px;}
+
+  .block{margin-bottom:64px;}
+
+  .entry{
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+
+  .projects-grid{grid-template-columns:1fr;}
+}
+
+/* Focus visibility */
+a:focus-visible, .btn:focus-visible{
+  outline:2px solid var(--rust);
+  outline-offset:2px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Alice Dsouza</h1>
-    <p>Art Project Coordinator | Creative Program Manager</p>
-</header>
+<div class="wrap">
 
-<nav>
-    <div class="nav-container">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
+  <aside class="sidebar">
+    <div class="name">Alice<br>Dsouza</div>
+    <p class="role">Art project coordinator &amp; creative programme manager, based in Dubai</p>
+
+    <nav aria-label="Section navigation">
+      <a href="#about">Summary</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="meta">
+      <p><a href="mailto:alice.c.dsouza7@gmail.com">alice.c.dsouza7@gmail.com</a></p>
+      <p>Dubai, UAE</p>
+      <p>English, Hindi, Konkani, Marathi</p>
     </div>
-</nav>
+  </aside>
 
-<section id="about">
-    <h2>Professional Summary</h2>
-    <div class="card">
-        <p>
-            Art and cultural project professional with 10 years of hands-on experience across museum operations, exhibitions, public art, event production, spatial design and creative project execution. Experienced in coordinating artists, architects, engineers, contractors, vendors, participants and on-site teams; managing project schedules, logistics, procurement, installations and community programmes. Recent experience includes work as an Art Project Manager with Dr. Subodh Kerkar Studio, delivering museum, public-art, archival and publication projects. 
-        </p>
-        <p style="margin-top:12px;">
-            Dubai-based and seeking an Art Project Coordinator, Exhibition Coordinator, Cultural Project Coordinator, Production Coordinator or Assistant Project Manager role, working closely with experienced managers and directors while bringing established hands-on project experience.
-    </div>
-</section>
+  <main>
 
-<section id="experience">
-    <h2>Professional Experience</h2>
-    <div class="card">
-        <ul>
-            <li><strong>Manager – Art Projects |Dr. Subodh Kerkar Studio | Goa (2024–2025):</strong> Led end-to-end execution for The Beer Museum and the book launch of Goa: Subodh Kerkar’s Canvas. Managed logistics, safety, and crowd control for massive public beach art performances, and digitized a 30+ year art collection.</li>
-            <li><strong>Community Programmes Lead | Museum of Goa (2025):</strong> Directed operations, school networks, and upcycling workshops for the Art for Sustainability initiative. Coordinated logistics across 15 municipal facilities to deliver programming for 2,000+ public school students.</li>
-            <li><strong>Freelance Event Manager & Art Project Coordinator | Independent (2019–2024):</strong> Managed production, artist logistics, and technical execution for major cultural festivals. Key partnerships included Serendipity Arts Festival (2019), Corona Quilt Project (2021), Goa Open Arts Festival (2021–2024), Motoverse / Royal Enfield (2022–2023), Lalaland Festival (2023), the Bamboo Costume Installation at Sunapranta Goa Centre for the Arts (2021), and spatial design for Susegad Siolim Café (2023).</li>
-            <li><strong>Freelance Interior & Project Consultant | Independent (2023–2024):</strong> Executed commercial and residential interior design concepts. Handled spatial planning, material sourcing, vendor partnerships, and on-site coordination from concept to final handover.</li>
-            <li><strong>Event Manager | Kaizen Events (2018–2019):</strong> Executed corporate and large-scale public events. Managed comprehensive event planning, technical production, client relations, and on-ground team management.</li>
-            <li><strong>Fashion Designer & Co-Founder | Always and Forever / Independent (2017–2024):</strong> Co-founded a boutique specializing in custom clothing and bridal accessories, managing sourcing and production timelines. Continued independent, bespoke custom-order commissions from home through 2024.</li>
-            <li><strong>Museum Assistant | Museum of Goa (2015–2017):</strong> Supported core exhibition operations, artwork installations, documentation, and VIP guided tours. Served as Project Lead for Carpet of Joy, a public installation involving 2,000+ volunteers and 150,000+ recycled bottles.</li>
-        </ul>
-    </div>
-</section>
+    <section id="about" class="block">
+      <div class="block-head">
+        <h2>Professional summary</h2>
+        <span class="tally">10 years</span>
+      </div>
+      <div class="summary">
+        <p>Art and cultural project professional with ten years of hands-on experience across museum operations, exhibitions, public art, event production, spatial design and creative project execution. Comfortable coordinating artists, architects, engineers, contractors, vendors, participants and on-site teams, and managing schedules, logistics, procurement and installations from concept to handover.</p>
+        <p>Most recently worked as Art Project Manager with Dr. Subodh Kerkar Studio, delivering museum, public-art, archival and publication projects. Now based in Dubai and looking for a role as Art Project Coordinator, Exhibition Coordinator, Cultural Project Coordinator, Production Coordinator or Assistant Project Manager, working alongside experienced managers and directors.</p>
+      </div>
+    </section>
 
-<section id="projects">
-    <h2>Key Project Highlights</h2>
-    <div class="projects-grid">
-        <div class="card project">
-            <h3>Large-Scale Installations & Archiving</h3>
-            <p>Digitized decades of artwork, coordinated installation teams, and optimized studio and inventory systems for museum-scale operations.</p>
+    <section id="experience" class="block">
+      <div class="block-head">
+        <h2>Experience</h2>
+        <span class="tally">2015 — 2025</span>
+      </div>
+
+      <div class="entry">
+        <div class="years">2024–2025</div>
+        <div>
+          <h3>Manager — Art Projects</h3>
+          <div class="org">Dr. Subodh Kerkar Studio, Goa</div>
+          <p class="desc">Led end-to-end execution for The Beer Museum and the book launch of <em>Goa: Subodh Kerkar's Canvas</em>. Managed logistics, safety and crowd control for large public beach-art performances, and digitised a thirty-year art collection.</p>
         </div>
-        <div class="card project">
-            <h3>Cultural Festival Operations</h3>
-            <p>Delivered cross-functional event execution, vendor management, and audience engagement strategies across major art festivals.</p>
+      </div>
+
+      <div class="entry">
+        <div class="years">2025</div>
+        <div>
+          <h3>Community Programmes Lead</h3>
+          <div class="org">Museum of Goa</div>
+          <p class="desc">Directed operations, school networks and upcycling workshops for the Art for Sustainability initiative, coordinating logistics across fifteen municipal facilities to deliver programming for over 2,000 public school students.</p>
         </div>
-        <div class="card project">
-            <h3>Sustainability & Workshops</h3>
-            <p>Designed and facilitated eco-conscious workshops promoting creative reuse and community engagement.</p>
+      </div>
+
+      <div class="entry">
+        <div class="years">2019–2024</div>
+        <div>
+          <h3>Freelance Event Manager &amp; Art Project Coordinator</h3>
+          <div class="org">Independent</div>
+          <p class="desc">Managed production, artist logistics and technical execution for major cultural festivals, including Serendipity Arts Festival (2019), the Corona Quilt Project (2021), Goa Open Arts Festival (2021–2024), Motoverse / Royal Enfield (2022–2023), Lalaland Festival (2023), the Bamboo Costume Installation at Sunapranta Goa Centre for the Arts (2021), and spatial design for Susegad Siolim Café (2023).</p>
         </div>
-        <div class="card project">
-            <h3>Studio & Systems Optimization</h3>
-            <p>Implemented workflow improvements, digital inventory tracking, and operational restructuring for efficient project delivery.</p>
+      </div>
+
+      <div class="entry">
+        <div class="years">2023–2024</div>
+        <div>
+          <h3>Freelance Interior &amp; Project Consultant</h3>
+          <div class="org">Independent</div>
+          <p class="desc">Executed commercial and residential interior design concepts, handling spatial planning, material sourcing, vendor partnerships and on-site coordination from concept to final handover.</p>
         </div>
-    </div>
-</section>
+      </div>
 
-<section id="skills">
-    <h2>Skills & Expertise</h2>
-    <div class="card">
-        <p>
-            Art & Exhibition Project Coordination | Exhibition Logistics & Installation | Event & Production Management | Cultural
-Programmes & Community Engagement | Site Planning, Setup & Teardown | Spatial Design & Fit-Out Coordination |
-Blueprint & Architectural Drawing Interpretation | Vendor Procurement & Contractor Coordination | Artist, Architect &
-Stakeholder Liaison | Production Schedules & Budget Control | On-Site Team Coordination | Digital Archiving &
-Airtable| MS Office
-        </p>
-    </div>
-</section>
-
-<section id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="card">
-        <p style="margin-bottom: 18px;">
-            Browse the full Art Project Portfolio (2015–2025) below, featuring The Beer Museum, beach art & performance installations, community programs, and more. Use the scrollbar within the viewer to page through, or open/download the PDF directly.
-        </p>
-
-        <div class="portfolio-frame-wrap" id="pdf-wrap">
-            <iframe
-                src="ALICE_D_SOUZA_ART_PROJECT_PORTFOLIO.pdf"
-                title="Alice D'Souza Art Project Portfolio PDF"
-                id="pdf-iframe">
-            </iframe>
+      <div class="entry">
+        <div class="years">2018–2019</div>
+        <div>
+          <h3>Event Manager</h3>
+          <div class="org">Kaizen Events</div>
+          <p class="desc">Executed corporate and large-scale public events, managing planning, technical production, client relations and on-ground teams.</p>
         </div>
+      </div>
 
-        <div class="portfolio-fallback" id="pdf-fallback">
-            <p>Your browser can't preview the PDF inline.</p>
+      <div class="entry">
+        <div class="years">2017–2024</div>
+        <div>
+          <h3>Fashion Designer &amp; Co-Founder</h3>
+          <div class="org">Always and Forever / Independent</div>
+          <p class="desc">Co-founded a boutique specialising in custom clothing and bridal accessories, managing sourcing and production timelines, later continuing bespoke commissions independently through 2024.</p>
         </div>
+      </div>
 
-        <p class="pdf-note">If the preview above doesn't load (common on some mobile browsers), use the buttons below.</p>
-
-        <div class="btn-row" style="margin-top: 16px;">
-            <a href="ALICE_D_SOUZA_ART_PROJECT_PORTFOLIO.pdf" target="_blank" class="btn">Open Portfolio PDF</a>
-            <a href="ALICE_D_SOUZA_ART_PROJECT_PORTFOLIO.pdf" download class="btn btn-secondary">Download PDF</a>
+      <div class="entry">
+        <div class="years">2015–2017</div>
+        <div>
+          <h3>Museum Assistant</h3>
+          <div class="org">Museum of Goa</div>
+          <p class="desc">Supported core exhibition operations, artwork installation, documentation and VIP guided tours. Served as Project Lead for Carpet of Joy, a public installation involving over 2,000 volunteers and 150,000 recycled bottles.</p>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="contact" class="contact">
-    <h2>Contact</h2>
-    <div class="card">
-        <p>Email: alice.c.dsouza7@gmail.com</p>
-        <p>Languages: English, Hindi, Konkani, Marathi</p>
-        <p>Based in Dubai, UAE</p>
-        <a href="mailto:alice.c.dsouza7@gmail.com" class="btn">Get In Touch</a>
-    </div>
-</section>
+    <section id="projects" class="block">
+      <div class="block-head">
+        <h2>Selected projects</h2>
+        <span class="tally">4 highlights</span>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project">
+          <h3>Large-scale installations &amp; archiving</h3>
+          <p>Digitised decades of artwork, coordinated installation teams, and optimised studio and inventory systems for museum-scale operations.</p>
+        </div>
+        <div class="project">
+          <h3>Cultural festival operations</h3>
+          <p>Delivered cross-functional event execution, vendor management and audience engagement strategies across major art festivals.</p>
+        </div>
+        <div class="project">
+          <h3>Sustainability &amp; workshops</h3>
+          <p>Designed and facilitated eco-conscious workshops promoting creative reuse and community engagement.</p>
+        </div>
+        <div class="project">
+          <h3>Studio &amp; systems optimisation</h3>
+          <p>Implemented workflow improvements, digital inventory tracking and operational restructuring for efficient project delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="block">
+      <div class="block-head">
+        <h2>Skills &amp; expertise</h2>
+      </div>
+      <div class="skills-list">
+        <span>Art &amp; exhibition project coordination</span>
+        <span>Exhibition logistics &amp; installation</span>
+        <span>Event &amp; production management</span>
+        <span>Cultural programmes &amp; community engagement</span>
+        <span>Site planning, setup &amp; teardown</span>
+        <span>Spatial design &amp; fit-out coordination</span>
+        <span>Blueprint &amp; architectural drawing interpretation</span>
+        <span>Vendor procurement &amp; contractor coordination</span>
+        <span>Artist, architect &amp; stakeholder liaison</span>
+        <span>Production schedules &amp; budget control</span>
+        <span>On-site team coordination</span>
+        <span>Digital archiving &amp; Airtable</span>
+        <span>MS Office</span>
+      </div>
+    </section>
+
+    <section id="portfolio" class="block">
+      <div class="block-head">
+        <h2>Portfolio</h2>
+        <span class="tally">2015 — 2025</span>
+      </div>
+      <p style="max-width:62ch; margin-bottom:20px;">The full Art Project Portfolio, featuring The Beer Museum, beach art and performance installations, and community programmes, is viewable below or can be opened as a standalone PDF.</p>
+
+      <div class="portfolio-frame-wrap" id="pdf-wrap">
+        <iframe
+          src="ALICE_D_SOUZA_ART_PROJECT_PORTFOLIO.pdf"
+          title="Alice Dsouza Art Project Portfolio PDF"
+          id="pdf-iframe">
+        </iframe>
+      </div>
+
+      <p class="pdf-note">If the preview above doesn't load — common on some mobile browsers — use the buttons below.</p>
+
+      <div class="btn-row">
+        <a href="ALICE_D_SOUZA_ART_PROJECT_PORTFOLIO.pdf" target="_blank" class="btn primary">Open portfolio PDF</a>
+        <a href="ALICE_D_SOUZA_ART_PROJECT_PORTFOLIO.pdf" download class="btn">Download PDF</a>
+      </div>
+    </section>
+
+    <section id="contact" class="block" style="margin-bottom:0;">
+      <div class="block-head">
+        <h2>Contact</h2>
+      </div>
+      <p style="margin-bottom:18px;">Open to Art Project Coordinator, Exhibition Coordinator, Cultural Project Coordinator, Production Coordinator and Assistant Project Manager roles.</p>
+      <div class="btn-row">
+        <a href="mailto:alice.c.dsouza7@gmail.com" class="btn primary">Email Alice</a>
+      </div>
+    </section>
+
+  </main>
+</div>
 
 <footer>
-    <p>© 2026 Alice Dsouza | All Rights Reserved</p>
+  <span>© 2026 Alice Dsouza</span>
+  <span>Dubai, UAE</span>
 </footer>
 
 <script>
-// Fallback detection for browsers that can't render PDFs inline (e.g. some mobile browsers)
+// Highlight the active section link as the user scrolls
+(function(){
+  var links = document.querySelectorAll('.sidebar nav a');
+  var sections = Array.from(links).map(function(l){
+    return document.querySelector(l.getAttribute('href'));
+  });
+
+  function onScroll(){
+    var pos = window.scrollY + 120;
+    var current = sections[0];
+    sections.forEach(function(sec){
+      if(sec && sec.offsetTop <= pos) current = sec;
+    });
+    links.forEach(function(l){
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current.id);
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+
+// Mobile fallback if inline PDF preview can't render
 (function() {
-    var iframe = document.getElementById('pdf-iframe');
-    var wrap = document.getElementById('pdf-wrap');
-    var fallback = document.getElementById('pdf-fallback');
-    var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isMobile) {
-        // Many mobile browsers can't render PDF in an iframe; show fallback message alongside.
-        fallback.style.display = 'block';
-    }
+  var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isMobile) {
+    var note = document.querySelector('.pdf-note');
+    if(note) note.style.fontWeight = '500';
+  }
 })();
 </script>
 
